@@ -1,0 +1,14 @@
+#divContent {
+	width:100%;
+}
+#divHeader {
+	width:98%; font-family: Calibri; font-size: 16px;
+	margin-bottom: 10px;
+}
+#divHeader p {
+	margin: 0px; padding: 0px;
+}
+#divMain {
+	width:98%; height: 400px; border: 1px solid gray;
+	padding:10px 0 10px 0;
+}

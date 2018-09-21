@@ -1,4 +1,4 @@
-# Relación entre Exploracion vs Produccion vs PrecioBarril (2007-2018)
+# Relación entre Exploración vs Producción vs Precio del Barril (2007-2018)
 
 - Estudiante: Andres Segura Tinoco
 - Código: 201711582

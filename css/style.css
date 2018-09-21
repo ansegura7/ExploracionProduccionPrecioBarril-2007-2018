@@ -12,3 +12,6 @@
 	width:98%; height: 400px; border: 1px solid gray;
 	padding:10px 0 10px 0;
 }
+#svgLineChart {
+	border: 1px solid steelblue;
+}

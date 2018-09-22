@@ -1,0 +1,14 @@
+[
+ {Year:2007,Exploratory_Wells:43, Avg_WTI_Price_USD:72.20,Avg_Qo_Bbls:531000},
+ {Year:2008,Exploratory_Wells:66, Avg_WTI_Price_USD:99.89,Avg_Qo_Bbls:588000},
+ {Year:2009,Exploratory_Wells:59, Avg_WTI_Price_USD:61.60,Avg_Qo_Bbls:671000},
+ {Year:2010,Exploratory_Wells:112,Avg_WTI_Price_USD:79.55,Avg_Qo_Bbls:785000},
+ {Year:2011,Exploratory_Wells:126,Avg_WTI_Price_USD:95.05,Avg_Qo_Bbls:915000},
+ {Year:2012,Exploratory_Wells:131,Avg_WTI_Price_USD:94.18,Avg_Qo_Bbls:944000},
+ {Year:2013,Exploratory_Wells:115,Avg_WTI_Price_USD:97.87,Avg_Qo_Bbls:1009691},
+ {Year:2014,Exploratory_Wells:113,Avg_WTI_Price_USD:94.99,Avg_Qo_Bbls:990458},
+ {Year:2015,Exploratory_Wells:25, Avg_WTI_Price_USD:50.28,Avg_Qo_Bbls:1005840},
+ {Year:2016,Exploratory_Wells:21, Avg_WTI_Price_USD:42.75,Avg_Qo_Bbls:886201},
+ {Year:2017,Exploratory_Wells:54, Avg_WTI_Price_USD:51.34,Avg_Qo_Bbls:854134},
+ {Year:2018,Exploratory_Wells:18, Avg_WTI_Price_USD:65.80,Avg_Qo_Bbls:866480},
+]

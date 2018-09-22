@@ -7,21 +7,25 @@
 	Fecha: 25/9/2018
 	Licencia: MIT
 	-->
-<html>
+<html lang="en">
 	<header>
+		<meta charset="utf-8">
+		<title>VA - Tarea 3</title>
+
 		<!-- Scripts -->
 		<script src="https://d3js.org/d3.v5.min.js"></script>
+		<script src="https://d3js.org/d3-format.v1.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
 
 		<!-- Style -->
 		<link rel="stylesheet" href="css/style.css" >
 	</header>
 	<body>
-		<div id="divContent" >
+		<div id="divContent" align="center">
 			<div id="divHeader" align="left" >
-				<h1>Relaci&oacute;n entre Exploraci&oacute;n vs Producci&oacute;n vs Precio del Barril (2007-2018)</h1>
+				<h1>Relación entre Exploración vs Producción vs Precio del Barril (2007-2018)</h1>
 				<p>Estudiante: Andres Segura Tinoco</p>
-				<p>C&oacute;digo: 201711582</p>
+				<p>Código: 201711582</p>
 				<p>Curso: Visual Analytics</p>
 				<p>Tarea 3</p>
 				<p>Fecha: 25/9/2018</p>
@@ -29,8 +33,33 @@
 			</div>
 
 			<div id="divMain" align="center" >
-				<svg id="svgLineChart" width="800" height="450"></svg>
+
+				<!-- Cantidad de pozos perforados -->
+				<div class="divText" >
+					<p>Como se puede observar en la siguiente gráfica, del 2014 en adelante, hubo un caida considerable en la cantidad de pozos perforados en el país. Esto muy probablemente se deba, a la caida en el precio del barril de petróleo, lo cual dejaba menos CAPEX disponible para invertir en nuevos pozos.</p>
+				</div>
+				<svg id="svgBarChart1" class="svgChart" ></svg>
+
+				<div class="divText" >
+					<p>Como se puede observar en la siguiente gráfica, ...</p>
+				</div>
+				<svg id="svgLineChart1" class="svgChart" ></svg>
+
+				<!-- Precio del barril de petróleo -->
+				<div class="divText" >
+					<p>Como se puede observar en la siguiente gráfica, ...</p>
+				</div>
+				<svg id="svgLineChart2" class="svgChart" ></svg>
+
+				<div class="divText" >
+					<p>Como se puede observar en la siguiente gráfica, ...</p>
+				</div>
 			</div>
+
+			<script type="text/javascript">
+		        // Run Page Script
+				setTimeout( () => { ast.init()	}, 50);
+			</script>
 		</div>
 	</body>
 </html>

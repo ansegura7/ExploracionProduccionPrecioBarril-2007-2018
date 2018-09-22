@@ -38,8 +38,8 @@ ast.createCharts = () => {
 	let svgBarChart1 = d3.select("#svgBarChart1");
 	xVar = "Exploratory_Wells";
 	yVar = "Year";
-	xTitle = "Fecha";
-	yTitle = "Pozos Perforados";
+	xTitle = "Pozos Perforados";
+	yTitle = "Fecha";
 	cTitle = "Declive de las Perforación - Colombia";
 	sColor = "steelblue";
  	ast.doBarChart(ast.fulldata, svgBarChart1, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor);

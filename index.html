@@ -23,7 +23,7 @@
 	<body>
 		<div id="divContent" align="center">
 			<div id="divHeader" align="left" >
-				<h1>Relación entre Exploración vs Producción vs Precio del Barril (2007-2018)</h1>
+				<h1>Consecuencias del Precio del Barril de Petróleo en Colombia (2007-2018)</h1>
 				<p>Estudiante: Andres Segura Tinoco</p>
 				<p>Código: 201711582</p>
 				<p>Curso: Visual Analytics</p>
@@ -34,25 +34,38 @@
 
 			<div id="divMain" align="center" >
 
-				<!-- Cantidad de pozos perforados -->
-				<div class="divText" >
-					<p>Como se puede observar en la siguiente gráfica, del 2014 en adelante, hubo un caida considerable en la cantidad de pozos perforados en el país. Esto muy probablemente se deba, a la caida en el precio del barril de petróleo, lo cual dejaba menos CAPEX disponible para invertir en nuevos pozos.</p>
-				</div>
-				<svg id="svgBarChart1" class="svgChart" ></svg>
-
-				<div class="divText" >
-					<p>Como se puede observar en la siguiente gráfica, ...</p>
-				</div>
-				<svg id="svgLineChart1" class="svgChart" ></svg>
-
 				<!-- Precio del barril de petróleo -->
 				<div class="divText" >
-					<p>Como se puede observar en la siguiente gráfica, ...</p>
+					<p>El precio del barril de petróleo a nivel mundial (por ejemplo <a target="_blank" href="http://www.oil-price.net/">WTI</a>) afecta positiva o negativamente a distintas industrias y económicas de todo el mundo.</p>
+					<p>En el siguiente gráfico, se puede observar el comportamiento promedio del precio del barril de petróleo entre el 2007 y el 2018, llegando a su valor máximo en el 2008 (casi 100 USD/Barril) y a su valor mínimo en el 2016 (42.75 USD/Barril). El precio del barril de petróleo no se puede controlar, y está más asociado a factores tales como: Oferta y Demanda, y la estabilidad o inestabilidad de los países productores de petróleo.</p>
+				</div>
+				<svg id="svgLineChart1" class="svgChart" ></svg>
+				<div class="divSubTitle">Gráfico 1 - Precio promedio de barril de petróleo.</div>
+
+				<!-- Cantidad de pozos perforados -->
+				<div class="divText" >
+					<p>Por otro lado, al analizar la figura 2, se puede observar que, a partir del 2015 en adelante, hubo una caída considerable en la cantidad de pozos perforados en Colombia. Esto muy probablemente se deba, a la caída en el precio del barril de petróleo en el mismo año, lo cual dejaba a las compañías petroleras y estatales con menos CAPEX disponible para invertir en nuevos pozos.</p>
+				</div>
+				<div class="divText" align="left" >
+					<label>Dirección del Gráfico:</label>
+					<select id="cmdBarChartType" onchange="ast.updateBarChart()" >
+						<option id="vert">Barras Verticales</option>
+						<option id="hort">Barras Horizontales</option>
+					</select>
+				</div>
+				<svg id="svgBarChart1" class="svgChart" ></svg>
+				<div class="divSubTitle">Gráfico 2 - Declive de las perforación en Colombia.</div>
+
+				<!-- Producción promedio de petróleo -->
+				<div class="divText" >
+					<p>Por último, al analizar la figura 3, se puede observar cómo influyó la cantidad de pozos perforados en Colombia desde el 2015, y por ende, el precio del barril de petróleo, en la producción nacional a partir del 2016.</p>
 				</div>
 				<svg id="svgLineChart2" class="svgChart" ></svg>
+				<div class="divSubTitle">Gráfico 3 - Producción diaria promedio en Colombia.</div>
 
 				<div class="divText" >
-					<p>Como se puede observar en la siguiente gráfica, ...</p>
+					<p>Como se puede observar en la figura 3, la producción nacional diaria de petróleo, disminuyo aproximadamente 150,000 bbls (un 15%) del 2015 al 2016, manteniendo una tendencia a la baja en los años posteriores.</p>
+					<p>Por lo tanto, se puede concluir que existe una relación entre el precio del barril de petróleo y la cantidad de pozos que se perforan en Colombia anualmente, impactando directamente en la producción nacional, ya que, a mayor cantidad de pozos perforados, se aumentan las probabilidades de aumentar o mantener la producción de petróleo del país.</p>
 				</div>
 			</div>
 

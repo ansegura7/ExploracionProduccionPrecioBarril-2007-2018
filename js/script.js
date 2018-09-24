@@ -8,6 +8,32 @@ ast.init = () => {
 	ast.createCharts();
 }
 
+ast.updateBarChart = () => {
+	let barChartType = d3.select("#cmdBarChartType").node().value;
+	let svgBarChart1 = d3.select("#svgBarChart1");
+
+	let maxItems = 20;
+	let xVar, yVar;
+	let cTitle, xTitle, yTitle, sColor;
+	cTitle = "Declive de las Perforación - Colombia";
+	sColor = "steelblue";
+
+	if(barChartType.toLowerCase().indexOf("vertical") >= 0) {
+		xVar = "Year";
+		yVar = "Exploratory_Wells";
+		xTitle = "Fecha";
+		yTitle = "Pozos Perforados";
+	 	ast.doVertBarChart(ast.fulldata, svgBarChart1, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor);
+	}
+	else {
+		xVar = "Exploratory_Wells";
+		yVar = "Year";
+		xTitle = "Pozos Perforados";
+		yTitle = "Fecha";
+		ast.doHorzBarChart(ast.fulldata, svgBarChart1, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor);
+	}
+}
+
 ast.loadData = () => {
 	let filepath = "https://raw.githubusercontent.com/ansegura7/ExploracionProduccionPrecioBarril-2007-2018/master/data/Exploracion-Produccion-PrecioBarril-2007-2018.csv";
 	filepath = "https://raw.githubusercontent.com/ansegura7/ExploracionProduccionPrecioBarril-2007-2018/master/data/Exploracion-Produccion-PrecioBarril-2007-2018.json";
@@ -36,13 +62,13 @@ ast.createCharts = () => {
 
 	// Gráfico 1 - Bar chart
 	let svgBarChart1 = d3.select("#svgBarChart1");
-	xVar = "Exploratory_Wells";
-	yVar = "Year";
-	xTitle = "Pozos Perforados";
-	yTitle = "Fecha";
+	xVar = "Year";
+	yVar = "Exploratory_Wells";
+	xTitle = "Fecha";
+	yTitle = "Pozos Perforados";
 	cTitle = "Declive de las Perforación - Colombia";
 	sColor = "steelblue";
- 	ast.doBarChart(ast.fulldata, svgBarChart1, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor);
+ 	ast.doVertBarChart(ast.fulldata, svgBarChart1, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor);
 
 	// Gráfico 2 - Line chart
 	let svgLineChart1 = d3.select("#svgLineChart1");
@@ -50,7 +76,7 @@ ast.createCharts = () => {
 	yVar = "Avg_WTI_Price_USD";
 	xTitle = "Fecha";
 	yTitle = "Precio Barril (USD)";
-	cTitle = "Precio Barril Promedio - WTI";
+	cTitle = "Precio Promedio de Barril de Petróleo - WTI";
 	sColor = "black";
 	ast.doLinearChart(ast.fulldata, svgLineChart1, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor);
 	
@@ -171,7 +197,7 @@ ast.doLinearChart = (rawdata, svg, maxItems, xVar, yVar, xTitle, yTitle, cTitle,
 }
 
 // Create a Bar chart into a SVG tag
-ast.doBarChart = (rawdata, svg, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor) => {
+ast.doHorzBarChart = (rawdata, svg, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor) => {
 	svg.html("");
 
 	const margin = {top: 50, right: 20, bottom: 50, left: 60},
@@ -245,6 +271,86 @@ ast.doBarChart = (rawdata, svg, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sC
 		.attr("y", (d) => (y(d[yVar])) + margin.top + 7)
 		.attr("width", d => x(d[xVar]))
 		.attr("height", 20)
+		.style("fill", sColor);
+
+	return svg.node();	
+}
+
+// Create a Bar chart into a SVG tag
+ast.doVertBarChart = (rawdata, svg, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor) => {
+	svg.html("");
+
+	const margin = {top: 50, right: 20, bottom: 50, left: 60},
+		iwidth = ast.width - margin.left - margin.right,
+		pwidth = 30,
+		iheight = ast.height - margin.top - margin.bottom;
+	
+	// Manipulate data
+	const barData = rawdata.slice(0, maxItems);
+  	
+  	const x = d3.scaleBand()
+		.domain(barData.map( d => d[xVar]))
+		.range([0, iwidth]);
+
+	const y = d3.scaleLinear()
+		.domain([0, d3.max(barData, d => d[yVar])])
+		.range([iheight, 0]);
+
+	const g = svg.append("g")
+		.attr("transform", `translate(${margin.left}, ${margin.top})`)
+		.style("text-anchor", "middle")
+		.style("color", "black")
+
+	g.append("g")
+		.call(d3.axisBottom(x))
+		.attr("transform", `translate(0, ${iheight})`);
+  
+	g.append("g")
+		.call(d3.axisLeft(y));
+
+		// text label for the x axis
+	g.append("text")
+		.attr("x", (iwidth / 2))
+		.attr("y", iheight + (margin.bottom / 2))
+		.attr("dy", "1em")
+		.style("text-anchor", "middle")
+		.style("font-family", "sans-serif")
+		.style("font-size", "12pt")
+		.text(xTitle); 
+
+	// text label for the y axis
+	g.append("text")
+		.attr("transform", "rotate(-90)")
+		.attr("x", -(iheight / 2))
+		.attr("y", -margin.left)
+		.attr("dy", "1em")
+		.style("text-anchor", "middle")
+		.style("font-family", "sans-serif")
+		.style("font-size", "12pt")
+		.text(yTitle); 
+
+	// add title
+	g.append("text")
+		.attr("x", (iwidth / 2))
+		.attr("y", (10 - margin.top))
+		.attr("dy", "1em")
+		.style("text-anchor", "middle")
+		.style("font-family", "sans-serif")
+		.style("font-size", "16pt")
+		.text(cTitle)
+		.style("color", "steelblue");
+
+	// add points
+	const rects = svg.selectAll(".bar")
+		.data(barData);
+  
+	rects.enter()
+    	.append("rect")
+		.attr("class", "bar")
+		.attr("x", (d) => (x(d[xVar]) + margin.left + 20))
+		.attr("y", (d) => (y(d[yVar]) + margin.top))
+		.attr("width", 20)
+		.attr("height", (d) => (iheight - y(d[yVar])))
 		.style("fill", sColor);
 
 	return svg.node();	

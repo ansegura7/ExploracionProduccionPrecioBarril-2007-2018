@@ -47,6 +47,12 @@
 					<p>En el siguiente gráfico, se puede observar el comportamiento anual promedio del precio del barril de petróleo entre el 2007 y el 2018, llegando a su valor máximo en el 2008 (casi 100 USD/Barril) y a su valor mínimo en el 2016 (42.75 USD/Barril).</p>
 					<p>Vale la pena mencionar, que el precio del barril de petróleo no se puede controlar facilmente, y está más bien asociado a factores tales como: la OPEP, la Oferta y Demanda del crudo, y la estabilidad o inestabilidad de los países productores de petróleo.</p>
 				</div>
+				<div class="divText" align="left" >
+					<label>Año de Corte:</label>
+					<select id="cmdCutOffYear" onchange="ast.createCharts()" >
+						
+					</select>
+				</div>
 				<svg id="svgLineChart1" class="svgChart" ></svg>
 				<div class="divSubTitle">Gráfico 1 - Precio promedio de barril de petróleo.</div>
 
@@ -134,17 +140,18 @@
 						<li>GitHub para almacenar el código de la Viz, y de los datos usados. A continuación el enlace a dicho repositorio principal del proyecto: <a target="_blank" href="https://github.com/ansegura7/PrecioBarrilPerforacionProduccion-2007-2018">PrecioBarril-Perforacion-Produccion-2007-2018</a></li>
 					</ul>
 
-					<h3>Prerrequisitos Y Uso</h3>
+					<h3>Prerrequisitos y Uso</h3>
 					<p>El proyecto sólo depende del acceso a los datos almacenados en el repositorio https://github.com/ansegura7/PrecioBarrilPerforacionProduccion-2007-2018 y a la disponibilidad del servicio de GitHub Pages, que permite el acceso por medio de un Navegador a la página principal proyecto.</p>
-					<p>El gráfico de barras depende de la opción seleccionada en el ComboBox: Dirección del Gráfico.</p>
+					<p>Todos los gráficos muestran el año de análisis seleccionado (con una línea roja punteada), dicho año se puede cambiar con el ComboBox: "Año de Corte".</p>
+					<p>El gráfico de barras depende de la opción seleccionada en el ComboBox: "Dirección del Gráfico".</p>
 
 					<h3>Autores</h3>
 					<p>El autor de los datos es la "Agencia Nacional de Hidrocarburos" del Estado. Los datos están actualizados hasta mediados del 2018.</p>
 					<p>El autor de la visualización es Andrés Segura Tinoco, CE 201711582.</p>
 
 					<h3>Screenshot</h3>
-					<p>A continuación, se presenta un pantallazo del proyecto:</p>
-					https://raw.githubusercontent.com/ansegura7/ProduccionFiscalizadaCol2017/master/VA-Tarea2-Screenshot.PNG
+					<p>En el siguiente repositorio, se encuentran algunos screenshots del proyecto:</p>
+					<a target="_blank" href="https://github.com/ansegura7/PrecioBarrilPerforacionProduccion-2007-2018/tree/master/screenshots">GitHub Screenshots</a>
 
 					<h3>Licencia</h3>
 					<p>Este proyecto está bajo la licencia <a target="_blank" href="https://github.com/ansegura7/PrecioBarrilPerforacionProduccion-2007-2018/blob/master/LICENSE">MIT</a>.</p>

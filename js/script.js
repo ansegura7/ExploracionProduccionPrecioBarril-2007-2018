@@ -19,8 +19,11 @@ ast.init = () => {
 				ast.fulldata.push(d);
 			});
 
+			// Add Year to Combo
+			ast.addComboYears("Year", 2014);
+
 			// Create charts
-			ast.createCharts()
+			ast.createCharts();
 		},
 		function(error) {
 			// Error log message
@@ -29,23 +32,28 @@ ast.init = () => {
 	);
 }
 
+// Add Year to Combo
+ast.addComboYears = (varYear, defYear) => {
+	var options = d3.select("#cmdCutOffYear");
+
+	const addItem = (d, i) => options
+		.append("option")
+		.text(d[varYear])
+		.attr("value", d[varYear])
+		.property("selected", (d[varYear] == defYear));
+
+	  // Calls addLi for each item on the array
+  	ast.fulldata.forEach(addItem)
+}
+
 // Create all charts
 ast.createCharts = () => {
 	let maxItems = 20;
 	let xVar, yVar;
 	let cTitle, xTitle, yTitle, sColor;
+	let cutValue = d3.select("#cmdCutOffYear").node().value;
 
-	// Gráfico 1 - Bar chart
-	let svgBarChart1 = d3.select("#svgBarChart1");
-	xVar = "Year";
-	yVar = "Exploratory_Wells";
-	xTitle = "Fecha";
-	yTitle = "Pozos Perforados";
-	cTitle = "Declive de las Perforación - Colombia";
-	sColor = "steelblue";
- 	ast.doVertBarChart(ast.fulldata, svgBarChart1, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor);
-
-	// Gráfico 2 - Line chart
+	// Gráfico 1 - Line chart
 	let svgLineChart1 = d3.select("#svgLineChart1");
 	xVar = "Year";
 	yVar = "Avg_WTI_Price_USD";
@@ -54,7 +62,19 @@ ast.createCharts = () => {
 	cTitle = "Precio Promedio de Barril de Petróleo - WTI";
 	sColor = "black";
 	ast.doLinearChart(ast.fulldata, svgLineChart1, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor);
-	
+	ast.addLineToChart(ast.fulldata, svgLineChart1, maxItems, xVar, yVar, 50, cutValue);
+
+	// Gráfico 2 - Bar chart
+	let svgBarChart1 = d3.select("#svgBarChart1");
+	xVar = "Year";
+	yVar = "Exploratory_Wells";
+	xTitle = "Fecha";
+	yTitle = "Pozos Perforados";
+	cTitle = "Declive de las Perforación - Colombia";
+	sColor = "steelblue";
+ 	ast.doVertBarChart(ast.fulldata, svgBarChart1, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor);
+ 	ast.addLineToChart(ast.fulldata, svgBarChart1, maxItems, xVar, yVar, 60, cutValue);
+
 	// Gráfico 3 - Line chart
 	let svgLineChart2 = d3.select("#svgLineChart2");
 	xVar = "Year";
@@ -64,6 +84,7 @@ ast.createCharts = () => {
 	cTitle = "Producción Diaria Promedio - Colombia";
 	sColor = "green";
 	ast.doLinearChart(ast.fulldata, svgLineChart2, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor, 80);
+	ast.addLineToChart(ast.fulldata, svgLineChart2, maxItems, xVar, yVar, 80, cutValue);
 
 	// Gráfico 4 - Line chart
 	let svgLineChart3 = d3.select("#svgLineChart3");
@@ -74,6 +95,7 @@ ast.createCharts = () => {
 	cTitle = "Ingresos Diarios Promedio por Venta de Petróleo - Colombia";
 	sColor = "darkgreen";
 	ast.doLinearChart(ast.fulldata, svgLineChart3, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor, 80);
+	ast.addLineToChart(ast.fulldata, svgLineChart3, maxItems, xVar, yVar, 80, cutValue);
 }
 
 // Create a Linear chart into a SVG tag
@@ -248,9 +270,9 @@ ast.doHorzBarChart = (rawdata, svg, maxItems, xVar, yVar, xTitle, yTitle, cTitle
 	// add points
 	const rects = svg.selectAll(".bar")
 		.data(barData);
-  
+
 	rects.enter()
-    	.append("rect")
+		.append("rect")
 		.attr("class", "bar")
 		.attr("x", margin.left)
 		.attr("y", (d) => (y(d[yVar])) + margin.top + 7)
@@ -343,8 +365,10 @@ ast.doVertBarChart = (rawdata, svg, maxItems, xVar, yVar, xTitle, yTitle, cTitle
 
 // Update Bar chart direction 
 ast.updateBarChart = () => {
-	let barChartType = d3.select("#cmdBarChartType").node().value;
 	let svgBarChart1 = d3.select("#svgBarChart1");
+	let barChartType = d3.select("#cmdBarChartType").node().value;
+	let cutValue = d3.select("#cmdCutOffYear").node().value;
+
 
 	let maxItems = 20;
 	let xVar, yVar;
@@ -358,6 +382,7 @@ ast.updateBarChart = () => {
 		xTitle = "Fecha";
 		yTitle = "Pozos Perforados";
 	 	ast.doVertBarChart(ast.fulldata, svgBarChart1, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor);
+ 		ast.addLineToChart(ast.fulldata, svgBarChart1, maxItems, xVar, yVar, 60, cutValue);
 	}
 	else {
 		xVar = "Exploratory_Wells";
@@ -366,4 +391,50 @@ ast.updateBarChart = () => {
 		yTitle = "Fecha";
 		ast.doHorzBarChart(ast.fulldata, svgBarChart1, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor);
 	}
+}
+
+// Adding a line to chart
+ast.addLineToChart = (rawdata, svg, maxItems, xVar, yVar, mLeft, cutValue) => {
+	const margin = {top: 50, right: 20, bottom: 50, left: (mLeft || 50)},
+		iwidth = ast.width - margin.left - margin.right,
+		pwidth = 30,
+		iheight = ast.height - margin.top - margin.bottom;
+
+	// Manipulate data
+	const currData = rawdata.slice(0, maxItems);
+
+	const x = d3.scaleBand()
+		.domain(currData.map( d => d[xVar]))
+		.range([0, iwidth]);
+
+	const y = d3.scaleLinear()
+		.domain([0, d3.max(currData, d => d[yVar])])
+		.range([iheight, 0]);
+	
+	var warnLine = {
+		label: 'Punto de corte',
+		x1: (x(cutValue) + pwidth),
+		x2: (x(cutValue) + pwidth),
+		y1: y(0),
+		y2: y(d3.max(rawdata, d => d[yVar]) * 1.01)
+	};
+
+	const g = svg.append('g')
+		.attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')');
+	
+	g.append('line')
+		.attr('x1', warnLine.x1)
+		.attr('y1', warnLine.y1)
+		.attr('x2', warnLine.x2)
+		.attr('y2', warnLine.y2)
+		.attr('class', 'zeroline');
+
+	// g.append('text')
+	// 	.attr('x', warnLine.x2)
+	// 	.attr('y', warnLine.y2)
+	// 	.attr('dy', '1em')
+	// 	.attr('text-anchor', 'end')
+	// 	.text(warnLine.label)
+	// 	.attr('class', 'zerolinetext')
+	// 	.attr('transform', 'translate(0, 90)');
 }

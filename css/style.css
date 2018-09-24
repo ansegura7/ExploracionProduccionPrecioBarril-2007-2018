@@ -28,3 +28,10 @@
 .divSubTitle {
 	font-family: sans-serif; font-size: 10pt; color: blue;
 }
+.zeroline {
+	fill: none; stroke: red; stroke-width: 0.5px; stroke-dasharray: 5 5;
+}
+
+.zerolinetext {
+	fill: red;
+}

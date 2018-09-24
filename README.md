@@ -29,6 +29,7 @@ Dicho dataset objetivo, fue formado a partir de la unión y preprocesamiento de 
 
 ## Objetivos del Proyecto - Why
 Crear una visualización web que permita identificar (identify) la dependencia (dependency) que existe entre el precio del barril de petróleo y la producción diaria de petróleo en Colombia.
+
 También, que la Viz permita comparar (compare) las tendencias (trends) del precio del barril de petróleo contra la cantidad de pozos perforados en Colombia.
 
 Por último, que la Viz presente (present) la tendencia (trend) de los ingresos nacionales por conceptos de venta de petróleo, con el objetivo de resaltar el impacto (positivo o negativo) que tiene el precio del barril de petróleo en los ingresos de la Nación.

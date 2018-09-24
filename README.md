@@ -60,7 +60,15 @@ Los datos están actualizados hasta mediados del 2018.
 El autor de la visualización es Andrés Segura Tinoco, CE 201711582.
 
 ## Screenshot
-A continuación, se presenta un pantallazo del proyecto: https://raw.githubusercontent.com/ansegura7/ProduccionFiscalizadaCol2017/master/VA-Tarea2-Screenshot.PNG
+A continuación, se presenta unos pantallazo del proyecto:
+
+![alt text](https://raw.githubusercontent.com/ansegura7/PrecioBarrilPerforacionProduccion-2007-2018/master/screenshots/Figure1.PNG)
+
+![alt text](https://raw.githubusercontent.com/ansegura7/PrecioBarrilPerforacionProduccion-2007-2018/master/screenshots/Figure2.PNG)
+
+![alt text](https://raw.githubusercontent.com/ansegura7/PrecioBarrilPerforacionProduccion-2007-2018/master/screenshots/Figure3.PNG)
+
+![alt text](https://raw.githubusercontent.com/ansegura7/PrecioBarrilPerforacionProduccion-2007-2018/master/screenshots/Figure4.PNG)
 
 ## Licencia
 Este proyecto está bajo la licencia MIT.

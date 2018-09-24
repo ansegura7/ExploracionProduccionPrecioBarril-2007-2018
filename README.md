@@ -60,7 +60,7 @@ Los datos están actualizados hasta mediados del 2018.
 El autor de la visualización es Andrés Segura Tinoco, CE 201711582.
 
 ## Screenshot
-A continuación, se presenta unos pantallazo del proyecto:
+A continuación, se presentan unos pantallazo del proyecto:
 
 ![alt text](https://raw.githubusercontent.com/ansegura7/PrecioBarrilPerforacionProduccion-2007-2018/master/screenshots/Figure1.PNG)
 

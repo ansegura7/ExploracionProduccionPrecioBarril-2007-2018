@@ -48,10 +48,15 @@ Para el desarrollo del proyecto se usaron las siguientes tecnologías:
 
 ## Prerrequisitos y Uso
 El proyecto sólo depende del acceso a los datos almacenados en el repositorio https://github.com/ansegura7/PrecioBarrilPerforacionProduccion-2007-2018 y a la disponibilidad del servicio de GitHub Pages, que permite el acceso por medio de un Navegador a la página principal proyecto.
-El gráfico de barras depende de la opción seleccionada en el ComboBox: Dirección del Gráfico.
+
+Todos los gráficos muestran el año de análisis seleccionado (con una línea roja punteada), dicho año se puede cambiar con el ComboBox: "Año de Corte".
+
+El gráfico de barras depende de la opción seleccionada en el ComboBox: "Dirección del Gráfico".
 
 ## Autores
-El autor de los datos es la "Agencia Nacional de Hidrocarburos" del Estado. Los datos están actualizados hasta mediados del 2018.
+El autor de los datos es la "Agencia Nacional de Hidrocarburos" del Estado.
+
+Los datos están actualizados hasta mediados del 2018.
 El autor de la visualización es Andrés Segura Tinoco, CE 201711582.
 
 ## Screenshot

@@ -1,4 +1,4 @@
-# Relación entre Exploración vs Producción vs Precio del Barril (2007-2018)
+# Consecuencias del Precio del Barril de Petróleo en Colombia (2007-2018)
 
 - Estudiante: Andres Segura Tinoco
 - Código: 201711582

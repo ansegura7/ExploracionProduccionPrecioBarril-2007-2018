@@ -15,6 +15,7 @@ ast.init = () => {
 				d.Exploratory_Wells = +d.Exploratory_Wells;
 				d.Avg_WTI_Price_USD = +d.Avg_WTI_Price_USD;
 				d.Avg_Qo_Bbls = +d.Avg_Qo_Bbls;
+				d.Ingresos_USD = (+d.Avg_Qo_Bbls * +d.Avg_WTI_Price_USD);
 				ast.fulldata.push(d);
 			});
 
@@ -63,6 +64,16 @@ ast.createCharts = () => {
 	cTitle = "Producción Diaria Promedio - Colombia";
 	sColor = "green";
 	ast.doLinearChart(ast.fulldata, svgLineChart2, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor, 80);
+
+	// Gráfico 4 - Line chart
+	let svgLineChart3 = d3.select("#svgLineChart3");
+	xVar = "Year";
+	yVar = "Ingresos_USD";
+	xTitle = "Fecha";
+	yTitle = "Ingresos Diarios Promedio (USD)";
+	cTitle = "Ingresos Diarios Promedio por Venta de Petróleo - Colombia";
+	sColor = "darkgreen";
+	ast.doLinearChart(ast.fulldata, svgLineChart3, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor, 80);
 }
 
 // Create a Linear chart into a SVG tag

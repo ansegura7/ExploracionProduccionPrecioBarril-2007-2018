@@ -1,57 +1,31 @@
 var ast = [];
-ast.fulldata;
+ast.fulldata = new Array();
 ast.width = 800;
 ast.height = 500;
 
+// Init dynamic components
 ast.init = () => {
-	ast.loadData();
-	ast.createCharts();
-}
-
-ast.updateBarChart = () => {
-	let barChartType = d3.select("#cmdBarChartType").node().value;
-	let svgBarChart1 = d3.select("#svgBarChart1");
-
-	let maxItems = 20;
-	let xVar, yVar;
-	let cTitle, xTitle, yTitle, sColor;
-	cTitle = "Declive de las Perforación - Colombia";
-	sColor = "steelblue";
-
-	if(barChartType.toLowerCase().indexOf("vertical") >= 0) {
-		xVar = "Year";
-		yVar = "Exploratory_Wells";
-		xTitle = "Fecha";
-		yTitle = "Pozos Perforados";
-	 	ast.doVertBarChart(ast.fulldata, svgBarChart1, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor);
-	}
-	else {
-		xVar = "Exploratory_Wells";
-		yVar = "Year";
-		xTitle = "Pozos Perforados";
-		yTitle = "Fecha";
-		ast.doHorzBarChart(ast.fulldata, svgBarChart1, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor);
-	}
-}
-
-ast.loadData = () => {
 	let filepath = "https://raw.githubusercontent.com/ansegura7/ExploracionProduccionPrecioBarril-2007-2018/master/data/Exploracion-Produccion-PrecioBarril-2007-2018.csv";
-	filepath = "https://raw.githubusercontent.com/ansegura7/ExploracionProduccionPrecioBarril-2007-2018/master/data/Exploracion-Produccion-PrecioBarril-2007-2018.json";
-	//ast.fulldata = d3.csv(filepath);
-	ast.fulldata = [
-					 {Year:2007,Exploratory_Wells:43, Avg_WTI_Price_USD:72.20,Avg_Qo_Bbls:531000},
-					 {Year:2008,Exploratory_Wells:66, Avg_WTI_Price_USD:99.89,Avg_Qo_Bbls:588000},
-					 {Year:2009,Exploratory_Wells:59, Avg_WTI_Price_USD:61.60,Avg_Qo_Bbls:671000},
-					 {Year:2010,Exploratory_Wells:112,Avg_WTI_Price_USD:79.55,Avg_Qo_Bbls:785000},
-					 {Year:2011,Exploratory_Wells:126,Avg_WTI_Price_USD:95.05,Avg_Qo_Bbls:915000},
-					 {Year:2012,Exploratory_Wells:131,Avg_WTI_Price_USD:94.18,Avg_Qo_Bbls:944000},
-					 {Year:2013,Exploratory_Wells:115,Avg_WTI_Price_USD:97.87,Avg_Qo_Bbls:1009691},
-					 {Year:2014,Exploratory_Wells:113,Avg_WTI_Price_USD:94.99,Avg_Qo_Bbls:990458},
-					 {Year:2015,Exploratory_Wells:25, Avg_WTI_Price_USD:50.28,Avg_Qo_Bbls:1005840},
-					 {Year:2016,Exploratory_Wells:21, Avg_WTI_Price_USD:42.75,Avg_Qo_Bbls:886201},
-					 {Year:2017,Exploratory_Wells:54, Avg_WTI_Price_USD:51.34,Avg_Qo_Bbls:854134},
-					 {Year:2018,Exploratory_Wells:18, Avg_WTI_Price_USD:65.80,Avg_Qo_Bbls:866480},
-					];
+
+	d3.csv(filepath).then(
+		function(data) {
+
+			// Load and parse data
+			data.forEach(function(d,i) {
+				d.Exploratory_Wells = +d.Exploratory_Wells;
+				d.Avg_WTI_Price_USD = +d.Avg_WTI_Price_USD;
+				d.Avg_Qo_Bbls = +d.Avg_Qo_Bbls;
+				ast.fulldata.push(d);
+			});
+
+			// Create charts
+			ast.createCharts()
+		},
+		function(error) {
+			// Error log message
+			console.log(error);
+		}
+	);
 }
 
 // Create all charts
@@ -354,4 +328,31 @@ ast.doVertBarChart = (rawdata, svg, maxItems, xVar, yVar, xTitle, yTitle, cTitle
 		.style("fill", sColor);
 
 	return svg.node();	
+}
+
+// Update Bar chart direction 
+ast.updateBarChart = () => {
+	let barChartType = d3.select("#cmdBarChartType").node().value;
+	let svgBarChart1 = d3.select("#svgBarChart1");
+
+	let maxItems = 20;
+	let xVar, yVar;
+	let cTitle, xTitle, yTitle, sColor;
+	cTitle = "Declive de las Perforación - Colombia";
+	sColor = "steelblue";
+
+	if(barChartType.toLowerCase().indexOf("vertical") >= 0) {
+		xVar = "Year";
+		yVar = "Exploratory_Wells";
+		xTitle = "Fecha";
+		yTitle = "Pozos Perforados";
+	 	ast.doVertBarChart(ast.fulldata, svgBarChart1, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor);
+	}
+	else {
+		xVar = "Exploratory_Wells";
+		yVar = "Year";
+		xTitle = "Pozos Perforados";
+		yTitle = "Fecha";
+		ast.doHorzBarChart(ast.fulldata, svgBarChart1, maxItems, xVar, yVar, xTitle, yTitle, cTitle, sColor);
+	}
 }

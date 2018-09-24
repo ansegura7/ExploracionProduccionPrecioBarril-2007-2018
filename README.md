@@ -1,5 +1,7 @@
 # Consecuencias del Precio del Barril de Petróleo en Colombia (2007-2018)
 
+![alt text](https://raw.githubusercontent.com/ansegura7/PrecioBarrilPerforacionProduccion-2007-2018/master/img/main-banner.jpg)
+
 - Estudiante: Andres Segura Tinoco
 - Código: 201711582
 - Curso: Visual Analytics
@@ -44,7 +46,7 @@ Para el desarrollo del proyecto se usaron las siguientes tecnologías:
 -	Javascript y el framework d3.js para crear los gráficos (de barras y de líneas) y la respectiva interacción con ellos.
 -	GitHub para almacenar el código de la Viz, y de los datos usados. A continuación dicho repositorio principal del proyecto: PrecioBarril-Perforacion-Produccion-2007-2018
 
-## Prerrequisitos Y Uso
+## Prerrequisitos y Uso
 El proyecto sólo depende del acceso a los datos almacenados en el repositorio https://github.com/ansegura7/PrecioBarrilPerforacionProduccion-2007-2018 y a la disponibilidad del servicio de GitHub Pages, que permite el acceso por medio de un Navegador a la página principal proyecto.
 El gráfico de barras depende de la opción seleccionada en el ComboBox: Dirección del Gráfico.
 

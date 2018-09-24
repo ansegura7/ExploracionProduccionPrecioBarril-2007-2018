@@ -33,6 +33,13 @@ También, que la Viz permita comparar (compare) las tendencias (trends) del prec
 
 Por último, que la Viz presente (present) la tendencia (trend) de los ingresos nacionales por conceptos de venta de petróleo, con el objetivo de resaltar el impacto (positivo o negativo) que tiene el precio del barril de petróleo en los ingresos de la Nación.
 
+## Marcas y Canales – How
+En los 3 gráficos de líneas, se usaron como marcas puntos conectados por líneas. Tanto los datos del eje X como los del eje Y están ordenados secuencialmente. En cada gráfico se usó un color distinto, asociado a la naturaleza del dato que se deseaba mostrar, por ejemplo, verde para el petróleo, verde oscuro para la venta de petróleo y negro el precio del barril de petróleo.
+
+Con respecto al gráfico de barras, se usaron como marcas líneas verticales ordenadas tanto en el eje X como en el eje Y.
+
+En todos los gráficos se usó la posición vertical, para mostrar el tamaño del valor que se deseaba graficar. Además, también se usó en cada gráfico un título y un subtítulo descriptivo, para ayudar al usuario a entender la información que se está visualizando.
+
 ## Insights
 -	Efectivamente existe una dependencia entre el precio del barril de petróleo y la producción diaria de petróleo en Colombia. Cuando el precio del barril está alto, Colombia invierte más en nuevas perforaciones, lo cual influye directamente en la cantidad de barriles de petróleo que se producirán en los próximos meses, que al final, significa más dinero para la Nación.
 -	En qué año comenzó la caída en el precio del barril de petróleo a nivel mundial: año 2014.
